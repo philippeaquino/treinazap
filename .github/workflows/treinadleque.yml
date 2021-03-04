@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 12.21.0
       - name: INSTAL AWS CLIENT
-        run: pip Install awscli
+        run: pip install awscli
       - name: INSTALL E BUILD
         run: npm install && npm run build
         env: 
