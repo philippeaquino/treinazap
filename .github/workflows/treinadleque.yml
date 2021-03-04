@@ -19,8 +19,8 @@ jobs:
         env: 
           CI: "false"
       - name: DEPLOY S3
-        run: cd build && AWS_ACCESS_KEY_ID=${CHAVE} AWS_SECRET_ACCESS_KEY=${SENHA} aws s3 sync . S3://treinadleque --acl public-read --delete
+        run: cd build && AWS_ACCESS_KEY_ID=${CHAVE} AWS_SECRET_ACCESS_KEY=${SENHA} aws s3 sync . s3://treinazap --acl public-read --delete
         env:
-          CHAVE: ${{ secrets.ACCESS_KEY }}
-          SENHA: ${{ secrets.SECRET_KEY }}
+           CHAVE: ${{ secrets.ACCESS_KEY }}
+           SENHA: ${{ secrets.SECRET_KEY }}
           
