@@ -1,5 +1,5 @@
 
-name: TreinaDleque PRD Para S3 
+name: TreinaDleque PRD - S3 
 
 on:
   workflow_dispatch:
@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: 12.21.0
       - name: INSTALL E BUILD
-      - run: node --version
+        run: node --version
 
   
