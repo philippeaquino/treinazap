@@ -34,27 +34,3 @@ jobs:
         run: cd build && AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws s3 sync . s3://treinazap --acl public-read --delete
       - name: CLEAR CACHE
         run: AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws cloudfront create-invalidation --distribution-id E91FKLAV95EGI --path '/*'
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ env.ACCESS_KEY }}
-          aws-secret-access-key: ${{ env.SECRET_KEY }}
-          aws-region: us-east-1
-
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-
-      - name: Build, tag, and push image to Amazon ECR
-        id: build-image
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: 160325706659.dkr.ecr.us-east-2.amazonaws.com/treinazap
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build -t treinazap .
-          docker tag treinazap:latest $ECR_REPOSITORY:latest
-          docker push 160325706659.dkr.ecr.us-east-2.amazonaws.com/treinazap:latest
-     # - name: CLEAR CACHE
-      #  run: aws ecs update-service --cluster Offerwise-Containers --service apiowreports --force-new-deployment --region us-east-1
