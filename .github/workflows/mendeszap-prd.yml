@@ -1,8 +1,9 @@
 name: Mendeszap-PRD - S3
 
 on:
-  release:
-    types: [commit]
+  push:
+    branches:
+     - master
 
 jobs:
   build:
