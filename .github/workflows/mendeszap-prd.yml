@@ -1,4 +1,4 @@
-name: Mendeszap-PRD - S3
+name: Deploy Mendeszap - S3
 
 on:
   push:
