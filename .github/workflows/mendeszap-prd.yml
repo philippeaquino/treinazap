@@ -11,5 +11,5 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.21.0
-      - name: INSTALL e BUILD
+      - name: INSTALL E BUILD
          run: node --version
