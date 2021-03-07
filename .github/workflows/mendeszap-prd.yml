@@ -14,4 +14,6 @@ jobs:
       - name: INSTALL E BUILD
         run: npm install && npm run build
       - name: LISTAR ARQUIVOS
-        run: ls -la build/*
+        run: ls -la build/* 
+        env:
+           CI: "false" 
