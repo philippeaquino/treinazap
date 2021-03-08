@@ -23,5 +23,4 @@ jobs:
         env:
            CI: "false" 
       - name: DEPLOY S3
-        run: cd build && AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws s3 sync . s3://mendeszap --acl public-read --delete
-  
+        run: cd build && AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws s3 sync . s3://treinazap --acl public-read --delete
