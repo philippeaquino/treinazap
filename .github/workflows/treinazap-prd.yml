@@ -20,17 +20,17 @@ jobs:
           node-version: 12.21.0
       - name: SET ENV FIREBASE
         run: envsubst <src/firebase-deploy.js> src/firebase.js
-      - name: CHECK FILE
-        run: cat src/firebase.js
-      - name: INSTALL E BUILD
-        run: npm install && npm run build
-        env:
-           CI: "false"
-      - name: BAIXANDO SONAR
-        run: wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip && unzip sonar-scanner-cli-4.6.0.2311-linux.zip
-      - name: ANALYSYS CODE
-        run: ./sonar-scanner-4.6.0.2311-linux/bin/sonar-scanner -Dsonar.projectKey=treinazap -Dsonar.sources=. -Dsonar.host.url=http://sonar.treinazap.cf/ -Dsonar.login=f8bd26c97c0a55fd7a4cfae46160766153ab01f8
-      - name: DEPLOY S3
-        run: cd build && AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws s3 sync . s3://treinazap --acl public-read --delete
-      - name: CLEAR CACHE
-        run: AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws cloudfront create-invalidation --distribution-id E91FKLAV95EGI --path '/*'
+##      - name: CHECK FILE
+##        run: cat src/firebase.js
+##      - name: INSTALL E BUILD
+##        run: npm install && npm run build
+##        env:
+##           CI: "false"
+##      - name: BAIXANDO SONAR
+##        run: wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip && unzip sonar-scanner-cli-4.6.0.2311-linux.zip
+##      - name: ANALYSYS CODE
+##        run: ./sonar-scanner-4.6.0.2311-linux/bin/sonar-scanner -Dsonar.projectKey=treinazap -Dsonar.sources=. -Dsonar.host.url=http://sonar.treinazap.cf/ -Dsonar.login=f8bd26c97c0a55fd7a4cfae46160766153ab01f8
+##      - name: DEPLOY S3
+##        run: cd build && AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws s3 sync . s3://treinazap --acl public-read --delete
+##      - name: CLEAR CACHE
+##        run: AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws cloudfront create-invalidation --distribution-id E91FKLAV95EGI --path '/*'
