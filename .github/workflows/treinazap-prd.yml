@@ -8,13 +8,15 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: add VARS
-        run: echo "::set-output name=ACCESS_KEY::$((RANDOM))"
+        run: echo "::set-env name=ACCESS_KEY::yellow"
+      - name: echo
+        run: echo ${ACCESS_KEY}
       - uses: actions/checkout@v2
       - name: REMOVE
         run: echo "::add-mask::$ACCESS_KEY"
       - uses: dopplerhq/cli-action@v1
       - name: set envs agent github actions
-        run: doppler secrets download --no-file --format=docker >> $GITHUB_ENV && echo "::add-mask::$ACCESS_KEY"
+        run: doppler secrets download --no-file --format=env-no-quotes >> $GITHUB_ENV && echo "::add-mask::$ACCESS_KEY"
         env:
            DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN_PRD }}
 
