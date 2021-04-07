@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: add VARS
         run: echo "::set-env name=ACCESS_KEY::yellow"
+        env:
+            ACTIONS_ALLOW_UNSECURE_COMMANDS: true
       - name: echo
         run: echo ${ACCESS_KEY}
       - uses: actions/checkout@v2
