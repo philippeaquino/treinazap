@@ -19,9 +19,9 @@ jobs:
         with:
           node-version: 12.21.0
       - name: SET ENV FIREBASE
-        run: envsubst <src/firebase-deploy.js> src/firebase.js
-##      - name: CHECK FILE
-##        run: cat src/firebase.js
+        run: envsubst <src/firebase-deploy.js> src/firebase.js && echo "::add-mask::${{ steps.init.outputs.VAR_PROJECT }}"
+      - name: CHECK FILE
+        run: cat src/firebase.js
 ##      - name: INSTALL E BUILD
 ##        run: npm install && npm run build
 ##        env:
